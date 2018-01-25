@@ -1,0 +1,11 @@
+---
+# defaults file for ansible-terminal
+
+# If set to 'yes' homebrew and terminus_powerline roles are required.
+# If set to 'no' then neither dependency roles nor iterm2  will be set up
+terminal_iterm2: yes
+
+# Speed up the role installation:
+# If set to 'no' then homebrew dependency role will not be applied even when 'terminal_iterm2: yes'
+terminal_homebrew_dep: no
+...
