@@ -3,7 +3,7 @@ terminal
 
 Ansible role for terminal configuration on MacOS (Linux coming soon)
 
-The role does the following:
+This role does the following:
  - Installs Nerdfonts
  - Installs Terminux Powerline font if configured (see Role Variables section)
  - Imports Terminal Profile with Custom Solarized Colorscheme (On MacOS)

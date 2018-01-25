@@ -43,7 +43,7 @@ galaxy_info:
     #       Maximum 20 tags per role.
 
 dependencies:
-  - { role: 'ansible-homebrew', when: [ ansible_os_family == 'Darwin', terminal_iterm2, terminal_homebrew_dep ] }
-  - { role: 'ansible-terminus_powerline', when: terminal_iterm2 and terminal_homebrew_dep }
-  - ansible-nerdfonts
+  - { role: drew-kun.homebrew, when: [ ansible_os_family == 'Darwin', terminal_iterm2, terminal_homebrew_dep ] }
+  - { role: drew-kun.terminus_powerline, when: terminal_iterm2 }
+  - drew-kun.nerdfonts
 ...
