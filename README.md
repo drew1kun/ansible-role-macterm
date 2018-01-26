@@ -5,11 +5,13 @@ Ansible role for terminal configuration on MacOS (Linux coming soon)
 
 This role does the following:
  - Installs Nerdfonts
- - Installs Terminux Powerline font if configured (see Role Variables section)
- - Imports Terminal Profile with Custom Solarized Colorscheme (On MacOS)
+ - Installs Terminus Powerline font if configured (see Role Variables section)
+ - Imports Terminal.app Profile with Custom Solarized Dark Colorscheme (On MacOS)
  - Installs homebrew if needed - see Role Variables section (On MacOS)
  - Installs iTerm2 from homebrew (On MacOS)
- - Imports iTerm2 profile with Custom Solarized Colorscheme (On MacOS)
+ - Imports iTerm2 profile with Custom Solarized Dark Colorscheme (On MacOS)
+ - Sets up nerdfonts for Non-ASCII Fonts and Terminus-Powerline font as ASCII Font.
+
 
 Requirements
 ------------
@@ -30,11 +32,16 @@ Role Variables
 Dependencies
 ------------
 
- - drew-kun.nerdfonts
+ - Drewshg312.nerdfonts
  - drew-kun.terminus_powerline (conditionally, when: terminal_iterm2 and terminal_homebrew_dep both set to 'yes')
 
 When used against MacOS hosts, then depends on:
  - drew-kun.homebrew (conditionally, when: terminal_iterm2 and terminal_homebrew_dep both set to 'yes')
+
+set terminal_homebrew_dep to 'no' if you have homebrew installed to speed up the configuration management.
+
+it is useful for combining this role with other roles which also install homebrew as a dependency).
+
 
 Example Playbook
 ----------------
