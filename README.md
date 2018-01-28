@@ -20,7 +20,7 @@ Requirements
 ------------
 
 One of the following OS (or deriviatives):
-  - MacOS
+  - MacOS (with [Homebrew][homebrew])
 
 Role Variables
 --------------
@@ -67,7 +67,7 @@ Author Information
 [galaxy-link]: https://galaxy.ansible.com/drew-kun/mac_terminal/
 [homebrew-galaxy-link]: https://galaxy.ansible.com/drew-kun/homebrew/
 [nerdfonts-galaxy-link]: https://galaxy.ansible.com/drew-kun/nerdfonts/
-[terminus_powerline-galaxy-link]: https://galaxy.ansible.com/drew-kunterminus_powerline/
+[terminus_powerline-galaxy-link]: https://galaxy.ansible.com/drew-kun/terminus_powerline/
 
 [mit-badge]: https://img.shields.io/badge/license-MIT-blue.svg
 [mit-link]: https://raw.githubusercontent.com/drew-kun/ansible-terminal/master/LICENSE
