@@ -42,7 +42,7 @@ Install via ansible-galaxy:
 
     ansible-galaxy install drew-kun.homebrew drew-kun.nerdfonts drew-kun.terminus_powerline
 
-set terminal_homebrew_dep to 'no' if you have homebrew installed to speed up the configuration management.
+set *terminal_homebrew_dep* to *'no'* if you have homebrew installed to speed up the configuration management.
 
 it is useful for combining this role with other roles which also install homebrew as a dependency).
 
