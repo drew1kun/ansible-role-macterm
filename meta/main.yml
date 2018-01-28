@@ -9,7 +9,7 @@ galaxy_info:
   github_branch: master
 
   platforms:
-  - name: MacOS
+  - name: MacOSX
     versions:
     - all
 
@@ -19,7 +19,7 @@ galaxy_info:
   - iTerm2
 
 dependencies:
-  - { role: drew-kun.homebrew, when: [ ansible_os_family == 'Darwin', terminal_iterm2, terminal_homebrew_dep ] }
+  - { role: drew-kun.homebrew, when: [ terminal_iterm2, terminal_homebrew_dep ] }
   - { role: drew-kun.terminus_powerline, when: terminal_iterm2 }
   - drew-kun.nerdfonts
 ...

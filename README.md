@@ -34,11 +34,13 @@ Role Variables
 Dependencies
 ------------
 
- - drew-kun.nerdfonts
- - drew-kun.terminus_powerline (conditionally, when: terminal_iterm2 and terminal_homebrew_dep both set to 'yes')
+ - [drew-kun.homebrew][homebrew-galaxy-link] (conditionally, when: terminal_iterm2 and terminal_homebrew_dep both set to 'yes')
+ - [drew-kun.terminus_powerline][terminus_powerline-galaxy-link] (conditionally, when: terminal_iterm2 and terminal_homebrew_dep both set to 'yes')
+ - [drew-kun.nerdfonts][nerdfonts-galaxy-link]
 
-When used against MacOS hosts, then depends on:
- - drew-kun.homebrew (conditionally, when: terminal_iterm2 and terminal_homebrew_dep both set to 'yes')
+Install via ansible-galaxy:
+
+    ansible-galaxy install drew-kun.homebrew drew-kun.nerdfonts drew-kun.terminus_powerline
 
 set terminal_homebrew_dep to 'no' if you have homebrew installed to speed up the configuration management.
 
@@ -61,8 +63,12 @@ Author Information
 
 ![Andrew Shagayev](drewshg@gmail.com)
 
-[role-badge]: https://img.shields.io/badge/role-drew--kunterminal-green.svg
-[galaxy-link]: https://galaxy.ansible.com/drew-kun/terminal/
+[role-badge]: https://img.shields.io/badge/role-drew--kun.mac__terminal-green.svg
+[galaxy-link]: https://galaxy.ansible.com/drew-kun/mac_terminal/
+[homebrew-galaxy-link]: https://galaxy.ansible.com/drew-kun/homebrew/
+[nerdfonts-galaxy-link]: https://galaxy.ansible.com/drew-kun/nerdfonts/
+[terminus_powerline-galaxy-link]: https://galaxy.ansible.com/drew-kunterminus_powerline/
+
 [mit-badge]: https://img.shields.io/badge/license-MIT-blue.svg
 [mit-link]: https://raw.githubusercontent.com/drew-kun/ansible-terminal/master/LICENSE
 [homebrew]: http://brew.sh/
