@@ -7,7 +7,7 @@
   homebrew_cask:
     name: iterm2
     state: present
-    install_options: "appdir={{ homebrew_cask_appdir }}"
+    #install_options: "appdir= ~/Applications"
   when: mac_terminal_iterm2
   tags:
     - mac_terminal
