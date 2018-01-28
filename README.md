@@ -15,36 +15,36 @@ This role does the following:
  - Imports iTerm2 profile with Custom Solarized Dark Colorscheme (On MacOS)
  - Sets up nerdfonts for Non-ASCII Fonts and Terminus-Powerline font as ASCII Font.
 
-
 Requirements
 ------------
 
 One of the following OS (or deriviatives):
   - MacOS (with [Homebrew][homebrew])
 
+If Homebrew is not installed on the managed host, install the following role via galaxy:
+
+    ansible-galaxy install drew-kun.homebrew
+
+And include it in the playbook:
+
+    roles:
+      - drew-kun.homebrew
+
 Role Variables
 --------------
 
-    terminal_iterm2: yes | no         # install iterm2 (on MacOS)
+    mac_terminal_iterm2: yes | no         # install iterm2 (on MacOS)
     # if yes - homebrew and terminus_powerline roles will be fetched as dependencies
-
-    terminal_homebrew_dep: yes | no   # speed up the role installation
-    # if set to no, then homebrew dependency role will not be applied even when 'terminal_iterm2: yes'
 
 Dependencies
 ------------
 
- - [drew-kun.homebrew][homebrew-galaxy-link] (conditionally, when: terminal_iterm2 and terminal_homebrew_dep both set to 'yes')
  - [drew-kun.terminus_powerline][terminus_powerline-galaxy-link] (conditionally, when: terminal_iterm2 and terminal_homebrew_dep both set to 'yes')
  - [drew-kun.nerdfonts][nerdfonts-galaxy-link]
 
 Install via ansible-galaxy:
 
-    ansible-galaxy install drew-kun.homebrew drew-kun.nerdfonts drew-kun.terminus_powerline
-
-set *terminal_homebrew_dep* to *'no'* if you have homebrew installed to speed up the configuration management.
-
-it is useful for combining this role with other roles which also install homebrew as a dependency).
+    ansible-galaxy install drew-kun.nerdfonts drew-kun.terminus_powerline
 
 Example Playbook
 ----------------
