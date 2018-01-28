@@ -9,6 +9,8 @@
     state: present
     install_options: "appdir={{ homebrew_cask_appdir }}"
   when: mac_terminal_iterm2
+  tags:
+    - mac_terminal
 
 - name: '[main] Copy iTerm preferences'
   copy:
@@ -19,6 +21,8 @@
     mode: 0600
   when: mac_terminal_iterm2
   notify: Read new iTerm profile after copying
+  tags:
+    - mac_terminal
 
 # Mac OS Terminal.app
 #
@@ -26,6 +30,8 @@
   shell: defaults read com.apple.Terminal 'Default Window Settings'
   register: mac_terminal_theme
   changed_when: false
+  tags:
+    - mac_terminal
 
 - name: '[main] Copy SolarizedDark_custom terminal.app configuration'
   copy:
@@ -34,11 +40,15 @@
     owner: "{{ ansible_user_id }}"
     group: staff
     mode: 0600
+  tags:
+    - mac_terminal
 
 - name: '[main] Ensure custom Terminal profile is added'
   shell: open ~/SolarizedDark_custom.terminal
   changed_when: false
   when: "'SolarizedDark_custom' not in mac_terminal_theme.stdout"
+  tags:
+    - mac_terminal
 
 - name: '[main] Ensure custom Terminal profile is set as default'
   shell: "{{ item }}"
@@ -47,4 +57,6 @@
     - defaults write com.apple.Terminal 'Startup Window Settings' -string 'SolarizedDark_custom'
   changed_when: false
   when: "'SolarizedDark_custom' not in mac_terminal_theme.stdout"
+  tags:
+    - mac_terminal
 ...
