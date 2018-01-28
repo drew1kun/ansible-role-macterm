@@ -61,7 +61,7 @@ License
 Author Information
 ------------------
 
-![Andrew Shagayev](drewshg@gmail.com)
+![Andrew Shagayev](<drewshg@gmail.com>)
 
 [role-badge]: https://img.shields.io/badge/role-drew--kun.mac__terminal-green.svg
 [galaxy-link]: https://galaxy.ansible.com/drew-kun/mac_terminal/
