@@ -1,5 +1,5 @@
-terminal
-=========
+Ansible role: mac_terminal
+==========================
 
 [![MIT licensed][mit-badge]][mit-link]
 [![Galaxy Role][role-badge]][galaxy-link]
