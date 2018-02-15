@@ -1,9 +1,7 @@
 ---
-# handlers file for ansible-terminal
+# handlers file for macos_terminal
 
 # alternatively run 'killall cfprefsd' command
 - name: Read new iTerm profile after copying
   shell: defaults read com.googlecode.iterm2
-  tags:
-    - mac_terminal
 ...
