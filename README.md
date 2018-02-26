@@ -32,9 +32,9 @@ And include it in the playbook:
 
 Role Variables
 --------------
-
-    mac_terminal_iterm2: yes | no         # install iterm2 (on MacOS)
-    # if yes - homebrew and terminus_powerline roles will be fetched as dependencies
+| Variable | Description | Default |
+|----------|-------------|---------|
+| mac_terminal_iterm2 | install iterm2.if yes - homebrew and terminus_powerline roles will be fetched as dependencies | yes |
 
 Dependencies
 ------------
