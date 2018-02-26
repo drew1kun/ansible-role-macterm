@@ -34,7 +34,7 @@ Role Variables
 --------------
 | Variable | Description | Default |
 |----------|-------------|---------|
-| mac_terminal_iterm2 | install iterm2. If yes - homebrew and terminus_powerline roles will be fetched as dependencies | yes |
+| **mac_terminal_iterm2** | install iterm2. If yes - homebrew and terminus_powerline roles will be fetched as dependencies | `yes` |
 
 Dependencies
 ------------
