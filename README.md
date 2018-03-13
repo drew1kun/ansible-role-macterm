@@ -18,6 +18,8 @@ This role does the following:
 Requirements
 ------------
 
+NOTE: Role requires Fact Gathering by ansible!
+
 One of the following OS (or deriviatives):
   - MacOS (with [Homebrew][homebrew])
 
@@ -50,6 +52,7 @@ Example Playbook
 ----------------
 
     - hosts: dev_clients
+      gather_facts: yes
       roles:
          - role: drew-kun.terminal
 
