@@ -61,4 +61,6 @@
     - macos_terminal
 
 - meta: flush_handlers
+  tags:
+    - macos_terminal
 ...
