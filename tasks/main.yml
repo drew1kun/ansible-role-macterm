@@ -59,4 +59,6 @@
   when: "'SolarizedDark_custom' not in macos_terminal_theme.stdout"
   tags:
     - macos_terminal
+
+- meta: flush_handlers
 ...
