@@ -2,8 +2,7 @@
 # tasks file for ansible-terminal
 
 # iTerm.app
-#
-- name: '[main] Ensure iTerm is installed using Homebrew Cask'
+- name: '[main] Ensure iTerm2 is installed using Homebrew Cask'
   homebrew_cask:
     name: iterm2
     state: present
@@ -12,7 +11,15 @@
   tags:
     - macos_terminal
 
-- name: '[main] Copy iTerm preferences'
+- name: '[main] Make sure iTerm2 is not running'
+  shell: pgrep iTerm2 && killall iTerm2 && sleep 10 || echo 'iTerm2_NOT_STARTED'
+  register: macos_terminal_pkill
+  changed_when: macos_terminal_pkill.stdout != 'iTerm2_NOT_STARTED'
+  when: macos_terminal_iterm2
+  tags:
+    - macos_terminal
+
+- name: '[main] Copy iTerm2 preferences'
   copy:
     src: com.googlecode.iterm2.plist
     dest: ~/Library/Preferences/
@@ -25,7 +32,6 @@
     - macos_terminal
 
 # Mac OS Terminal.app
-#
 - name: '[main] Get current Terminal profile'
   shell: defaults read com.apple.Terminal 'Default Window Settings'
   register: macos_terminal_theme
