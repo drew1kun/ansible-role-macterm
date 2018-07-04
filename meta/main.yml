@@ -14,9 +14,9 @@ galaxy_info:
     - all
 
   galaxy_tags:
-  - MacOS
-  - Terminal
-  - iTerm2
+  - macos
+  - terminal
+  - iterm2
 
 dependencies:
   - { role: drew_kun.terminus_powerline, when: macos_terminal_iterm2 }
