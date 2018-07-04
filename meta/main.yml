@@ -1,4 +1,5 @@
 galaxy_info:
+  role_name: macos_terminal
   author: Andrew Shagayev
   description: Configure the terminal to use Solarized Colorscheme, Nerdfonts and Terminus powerline fonts
 
