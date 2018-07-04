@@ -20,6 +20,6 @@ galaxy_info:
   - iterm2
 
 dependencies:
-  - { role: drew_kun.terminus_powerline, when: macos_terminal_iterm2 }
-  - drew_kun.nerdfonts
+  - { role: drew-kun.terminus_powerline, when: macos_terminal_iterm2 }
+  - drew-kun.nerdfonts
 ...
