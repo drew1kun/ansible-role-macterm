@@ -15,13 +15,13 @@ This role does the following:
  - Imports iTerm2 profile with Custom Solarized Dark Colorscheme
  - Sets up nerdfonts for Non-ASCII Fonts and Terminus-Powerline font as ASCII Font.
 
-In combination with [ansible-ohmyzsh role](https://github.com/drew-kun/ansible-ohmyzsh) getting the following results:
+In combination with [ansible-ohmyzsh role](https://github.com/drew_kun/ansible-ohmyzsh) getting the following results:
 
 iTerm2:
-![alt text](https://github.com/drew-kun/ansible-macos_terminal/blob/master/imgs/iterm2_ohmzsh.png "iTerm2")
+![alt text](https://github.com/drew_kun/ansible-macos_terminal/blob/master/imgs/iterm2_ohmzsh.png "iTerm2")
 
 MacOS Terminal app:
-![alt text](https://github.com/drew-kun/ansible-macos_terminal/blob/master/imgs/terminal.png "MacOS Terminal app")
+![alt text](https://github.com/drew_kun/ansible-macos_terminal/blob/master/imgs/terminal.png "MacOS Terminal app")
 
 
 Requirements
@@ -34,12 +34,12 @@ One of the following OS (or deriviatives):
 
 If Homebrew is not installed on the managed host, install the following role via galaxy:
 
-    ansible-galaxy install drew-kun.homebrew
+    ansible-galaxy install drew_kun.homebrew
 
 And include it in the playbook:
 
     roles:
-      - drew-kun.homebrew
+      - drew_kun.homebrew
 
 Role Variables
 --------------
@@ -50,12 +50,12 @@ Role Variables
 Dependencies
 ------------
 
- - [drew-kun.terminus_powerline][terminus_powerline-galaxy-link] (conditionally, when: terminal_iterm2 and terminal_homebrew_dep both set to 'yes')
- - [drew-kun.nerdfonts][nerdfonts-galaxy-link]
+ - [drew_kun.terminus_powerline][terminus_powerline-galaxy-link] (conditionally, when: terminal_iterm2 and terminal_homebrew_dep both set to 'yes')
+ - [drew_kun.nerdfonts][nerdfonts-galaxy-link]
 
 Install via ansible-galaxy:
 
-    ansible-galaxy install drew-kun.nerdfonts drew-kun.terminus_powerline
+    ansible-galaxy install drew_kun.nerdfonts drew_kun.terminus_powerline
 
 Example Playbook
 ----------------
@@ -63,7 +63,7 @@ Example Playbook
     - hosts: dev_clients
       gather_facts: yes
       roles:
-         - role: drew-kun.terminal
+         - role: drew_kun.terminal
 
 License
 -------
@@ -75,15 +75,15 @@ Author Information
 
 Andrew Shagayev | [e-mail](mailto:drewshg@gmail.com)
 
-[role-badge]: https://img.shields.io/badge/role-drew--kun.macos__terminal-green.svg
-[galaxy-link]: https://galaxy.ansible.com/drew-kun/macos_terminal/
-[homebrew-galaxy-link]: https://galaxy.ansible.com/drew-kun/homebrew/
-[nerdfonts-galaxy-link]: https://galaxy.ansible.com/drew-kun/nerdfonts/
-[terminus_powerline-galaxy-link]: https://galaxy.ansible.com/drew-kun/terminus_powerline/
+[role-badge]: https://img.shields.io/badge/role-drew__kun.macos__terminal-green.svg
+[galaxy-link]: https://galaxy.ansible.com/drew_kun/macos_terminal/
+[homebrew-galaxy-link]: https://galaxy.ansible.com/drew_kun/homebrew/
+[nerdfonts-galaxy-link]: https://galaxy.ansible.com/drew_kun/nerdfonts/
+[terminus_powerline-galaxy-link]: https://galaxy.ansible.com/drew_kun/terminus_powerline/
 
 [mit-badge]: https://img.shields.io/badge/license-MIT-blue.svg
-[mit-link]: https://raw.githubusercontent.com/drew-kun/ansible-terminal/master/LICENSE
+[mit-link]: https://raw.githubusercontent.com/drew_kun/ansible-terminal/master/LICENSE
 [homebrew]: http://brew.sh/
 [nerdfonts]: https://nerdfonts.com/
-[terminus-git]: https://github.com/drew-kun/terminus_powerline_font_osx
+[terminus-git]: https://github.com/drew_kun/terminus_powerline_font_osx
 [solarized-link]: http://ethanschoonover.com/solarized
