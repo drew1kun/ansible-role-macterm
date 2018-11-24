@@ -60,10 +60,12 @@ Install via ansible-galaxy:
 Example Playbook
 ----------------
 
-    - hosts: dev_clients
-      gather_facts: yes
-      roles:
-         - role: drew-kun.terminal
+```yaml
+- hosts: dev_clients
+  gather_facts: yes
+  roles:
+  - role: drew-kun.terminal
+```
 
 License
 -------
