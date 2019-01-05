@@ -33,7 +33,7 @@
 
 # Mac OS Terminal.app
 - name: '[main] Get current Terminal profile'
-  shell: defaults read com.apple.Terminal 'Default Window Settings'
+  command: defaults read com.apple.Terminal 'Default Window Settings'
   register: macos_terminal_theme
   changed_when: false
   tags:
@@ -50,14 +50,14 @@
     - macos_terminal
 
 - name: '[main] Ensure custom Terminal profile is added'
-  shell: open ~/SolarizedDark_custom.terminal
+  command: open ~/SolarizedDark_custom.terminal
   changed_when: false
   when: "'SolarizedDark_custom' not in macos_terminal_theme.stdout"
   tags:
     - macos_terminal
 
 - name: '[main] Ensure custom Terminal profile is set as default'
-  shell: "{{ item }}"
+  command: "{{ item }}"
   with_items:
     - defaults write com.apple.Terminal 'Default Window Settings' -string 'SolarizedDark_custom'
     - defaults write com.apple.Terminal 'Startup Window Settings' -string 'SolarizedDark_custom'

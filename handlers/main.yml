@@ -3,5 +3,5 @@
 
 # alternatively run 'killall cfprefsd' command
 - name: Read new iTerm profile after copying
-  shell: defaults read com.googlecode.iterm2
+  command: defaults read com.googlecode.iterm2
 ...
