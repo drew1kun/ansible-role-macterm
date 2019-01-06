@@ -31,6 +31,7 @@
   tags: macos_terminal
 
 # Mac OS Terminal.app
+# at least on jan6 2019, the osx_defaults module does not allow to READ values (shame).
 - name: '[main] Get current Terminal profile'
   command: defaults read com.apple.Terminal 'Default Window Settings'
   register: macos_terminal_theme
@@ -52,13 +53,19 @@
   when: "'SolarizedDark_custom' not in macos_terminal_theme.stdout"
   tags: macos_terminal
 
+#  - defaults write com.apple.Terminal 'Default Window Settings' -string 'SolarizedDark_custom'
+#  - defaults write com.apple.Terminal 'Startup Window Settings' -string 'SolarizedDark_custom'
+#  when: "'SolarizedDark_custom' not in macos_terminal_theme.stdout"
 - name: '[main] Ensure custom Terminal profile is set as default'
-  command: "{{ item }}"
+  osx_defaults:
+    domain: com.apple.Terminal
+    state: present
+    key: "{{ item }}"
+    type: string
+    value: SolarizedDark_custom
   with_items:
-  - defaults write com.apple.Terminal 'Default Window Settings' -string 'SolarizedDark_custom'
-  - defaults write com.apple.Terminal 'Startup Window Settings' -string 'SolarizedDark_custom'
-  changed_when: false
-  when: "'SolarizedDark_custom' not in macos_terminal_theme.stdout"
+  - 'Default Window Settings'
+  - 'Startup Window Settings'
   tags: macos_terminal
 
 - meta: flush_handlers
