@@ -10,16 +10,14 @@
   register: macos_terminal_iterm2_result
   until: macos_terminal_iterm2_result is succeeded
   when: macos_terminal_iterm2
-  tags:
-    - macos_terminal
+  tags: macos_terminal
 
 - name: '[main] Make sure iTerm2 is not running'
   shell: pgrep iTerm2 && killall iTerm2 && sleep 10 || echo 'iTerm2_NOT_STARTED'
   register: macos_terminal_pkill
   changed_when: macos_terminal_pkill.stdout != 'iTerm2_NOT_STARTED'
   when: macos_terminal_iterm2
-  tags:
-    - macos_terminal
+  tags: macos_terminal
 
 - name: '[main] Copy iTerm2 preferences'
   copy:
@@ -30,16 +28,14 @@
     mode: 0600
   when: macos_terminal_iterm2
   notify: Read new iTerm profile after copying
-  tags:
-    - macos_terminal
+  tags: macos_terminal
 
 # Mac OS Terminal.app
 - name: '[main] Get current Terminal profile'
   command: defaults read com.apple.Terminal 'Default Window Settings'
   register: macos_terminal_theme
   changed_when: false
-  tags:
-    - macos_terminal
+  tags: macos_terminal
 
 - name: '[main] Copy SolarizedDark_custom terminal.app configuration'
   copy:
@@ -48,27 +44,23 @@
     owner: "{{ ansible_user_id }}"
     group: staff
     mode: 0600
-  tags:
-    - macos_terminal
+  tags: macos_terminal
 
 - name: '[main] Ensure custom Terminal profile is added'
   command: open ~/SolarizedDark_custom.terminal
   changed_when: false
   when: "'SolarizedDark_custom' not in macos_terminal_theme.stdout"
-  tags:
-    - macos_terminal
+  tags: macos_terminal
 
 - name: '[main] Ensure custom Terminal profile is set as default'
   command: "{{ item }}"
   with_items:
-    - defaults write com.apple.Terminal 'Default Window Settings' -string 'SolarizedDark_custom'
-    - defaults write com.apple.Terminal 'Startup Window Settings' -string 'SolarizedDark_custom'
+  - defaults write com.apple.Terminal 'Default Window Settings' -string 'SolarizedDark_custom'
+  - defaults write com.apple.Terminal 'Startup Window Settings' -string 'SolarizedDark_custom'
   changed_when: false
   when: "'SolarizedDark_custom' not in macos_terminal_theme.stdout"
-  tags:
-    - macos_terminal
+  tags: macos_terminal
 
 - meta: flush_handlers
-  tags:
-    - macos_terminal
+  tags: macos_terminal
 ...
