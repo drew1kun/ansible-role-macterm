@@ -46,6 +46,7 @@ Role Variables
 | Variable | Description | Default |
 |----------|-------------|---------|
 | **mac_terminal_iterm2** | install iterm2. If yes - homebrew and terminus_powerline roles will be fetched as dependencies | `yes` |
+| **mac_terminal_colorscheme** | Terminal app default theme (for iter2 change it manually in Preferences). OPTIONS: `Solarized_Dark_Custom` or `Nord_Custom` | `Nord_Custom` |
 
 Dependencies
 ------------
