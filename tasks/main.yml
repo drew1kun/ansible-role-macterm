@@ -15,7 +15,7 @@
 - name: '[main] Make sure iTerm2 is not running'
   shell: pgrep iTerm2 && killall iTerm2 && sleep 10 || echo 'iTerm2_NOT_STARTED'
   register: macos_terminal_pkill
-  changed_when: macos_terminal_pkill.stdout != 'iTerm2_NOT_STARTED'
+  changed_when: "'iTerm2_NOT_STARTED' not in macos_terminal_pkill.stdout"
   when: macos_terminal_iterm2
   tags: macos_terminal
 
@@ -31,38 +31,30 @@
   tags: macos_terminal
 
 # Mac OS Terminal.app
-# at least on jan6 2019, the osx_defaults module does not allow to READ values (shame).
-- name: '[main] Get current Terminal profile'
-  command: defaults read com.apple.Terminal 'Default Window Settings'
-  register: macos_terminal_theme
-  changed_when: false
+- name: '[main] Make sure Terminal app is not running'
+  shell: pgrep Terminal && killall Terminal && sleep 10 || echo 'Terminal_app_NOT_STARTED'
+  register: macos_terminal_app_pkill
+  changed_when: "'Terminal_app_NOT_STARTED' not in macos_terminal_app_pkill.stdout"
   tags: macos_terminal
 
-- name: '[main] Copy SolarizedDark_custom terminal.app configuration'
+- name: '[main] Copy Terminal app preferences'
   copy:
-    src: SolarizedDark_custom.terminal
-    dest: ~/
+    src: com.apple.Terminal.plist
+    dest: ~/Library/Preferences/
     owner: "{{ ansible_user_id }}"
     group: staff
     mode: 0600
   tags: macos_terminal
 
-- name: '[main] Ensure custom Terminal profile is added'
-  command: open ~/SolarizedDark_custom.terminal
-  changed_when: false
-  when: "'SolarizedDark_custom' not in macos_terminal_theme.stdout"
-  tags: macos_terminal
-
-#  - defaults write com.apple.Terminal 'Default Window Settings' -string 'SolarizedDark_custom'
-#  - defaults write com.apple.Terminal 'Startup Window Settings' -string 'SolarizedDark_custom'
-#  when: "'SolarizedDark_custom' not in macos_terminal_theme.stdout"
-- name: '[main] Ensure custom Terminal profile is set as default'
+#  - defaults write com.apple.Terminal 'Default Window Settings' -string 'Solarized_Dark_custom'
+#  - defaults write com.apple.Terminal 'Startup Window Settings' -string 'Solarized_Dark_custom'
+- name: '[main] Ensure {{ macos_terminal_colorscheme }} profile is set as default'
   osx_defaults:
     domain: com.apple.Terminal
     state: present
     key: "{{ item }}"
     type: string
-    value: SolarizedDark_custom
+    value: "{{ macos_terminal_colorscheme }}"
   with_items:
   - 'Default Window Settings'
   - 'Startup Window Settings'

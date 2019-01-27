@@ -4,4 +4,7 @@
 # If set to 'yes' homebrew and terminus_powerline roles are required.
 # If set to 'no' then neither dependency roles nor iterm2  will be set up
 macos_terminal_iterm2: yes
+
+# Solarized_Dark_Custom | Nord_Custom
+macos_terminal_colorscheme: Nord_Custom
 ...
