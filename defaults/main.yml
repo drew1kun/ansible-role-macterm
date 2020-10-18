@@ -6,5 +6,5 @@
 macos_terminal_iterm2: yes
 
 # Solarized_Dark_Custom | Nord_Custom
-macos_terminal_colorscheme: Nord_Custom
+macos_terminal_colorscheme: Solarized_Dark_Custom
 ...
