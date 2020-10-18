@@ -47,7 +47,6 @@
   tags: macos_terminal
 
 #  - defaults write com.apple.Terminal 'Default Window Settings' -string 'Solarized_Dark_custom'
-#  - defaults write com.apple.Terminal 'Startup Window Settings' -string 'Solarized_Dark_custom'
 - name: '[main] Ensure {{ macos_terminal_colorscheme }} profile is set as default'
   osx_defaults:
     domain: com.apple.Terminal
