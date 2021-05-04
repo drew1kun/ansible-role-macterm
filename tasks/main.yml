@@ -21,7 +21,7 @@
 
 - name: '[main] Copy iTerm2 preferences'
   copy:
-    src: com.googlecode.iterm2.plist
+    src: "{{ macos_terminal_colorscheme }}/com.googlecode.iterm2.plist"
     dest: ~/Library/Preferences/
     owner: "{{ ansible_user_id }}"
     group: staff
@@ -39,7 +39,7 @@
 
 - name: '[main] Copy Terminal app preferences'
   copy:
-    src: com.apple.Terminal.plist
+    src: "{{ macos_terminal_colorscheme }}/com.apple.Terminal.plist"
     dest: ~/Library/Preferences/
     owner: "{{ ansible_user_id }}"
     group: staff
