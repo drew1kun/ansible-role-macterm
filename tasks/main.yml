@@ -3,7 +3,7 @@
 
 # iTerm.app
 - name: '[main] Ensure iTerm2 is installed using Homebrew Cask'
-  homebrew_cask:
+  community.general.homebrew_cask:
     name: iterm2
     state: present
     #install_options: "appdir= ~/Applications"
