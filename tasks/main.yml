@@ -1,64 +1,28 @@
 ---
-# tasks file for ansible-terminal
+# tasks file for ansible-macos_terminal
 
-# iTerm.app
-- name: '[main] Ensure iTerm2 is installed using Homebrew Cask'
-  community.general.homebrew_cask:
-    name: iterm2
-    state: present
-    #install_options: "appdir= ~/Applications"
-  register: macos_terminal_iterm2_result
-  until: macos_terminal_iterm2_result is succeeded
+- name: '[main] Determine brew prefix'
+  command: 'brew --prefix'
+  environment:
+    PATH: "/opt/homebrew/bin:/usr/local/bin:{{ ansible_env.PATH }}"
+  register: macos_terminal_brew_prefix
+  changed_when: false
+  tags: macos_terminal
+
+- name: '[main] Import Terminal app tasks'
+  import_tasks: terminal_app.yml
+  tags: macos_terminal
+
+- name: '[main] Include iTerm2 tasks'
+  include_tasks: iterm2.yml
   when: macos_terminal_iterm2
-  tags: macos_terminal
+  tags:
+  - macos_terminal
+  - macos_terminal_iterm2
 
-- name: '[main] Make sure iTerm2 is not running'
-  shell: pgrep iTerm2 && killall iTerm2 && sleep 10 || echo 'iTerm2_NOT_STARTED'
-  register: macos_terminal_pkill
-  changed_when: "'iTerm2_NOT_STARTED' not in macos_terminal_pkill.stdout"
-  when: macos_terminal_iterm2
-  tags: macos_terminal
-
-- name: '[main] Copy iTerm2 preferences'
-  copy:
-    src: "{{ macos_terminal_colorscheme }}/com.googlecode.iterm2.plist"
-    dest: ~/Library/Preferences/
-    owner: "{{ ansible_user_id }}"
-    group: staff
-    mode: 0600
-  when: macos_terminal_iterm2
-  notify: Read new iTerm profile after copying
-  tags: macos_terminal
-
-# Mac OS Terminal.app
-- name: '[main] Make sure Terminal app is not running'
-  shell: pgrep Terminal && killall Terminal && sleep 10 || echo 'Terminal_app_NOT_STARTED'
-  register: macos_terminal_app_pkill
-  changed_when: "'Terminal_app_NOT_STARTED' not in macos_terminal_app_pkill.stdout"
-  tags: macos_terminal
-
-- name: '[main] Copy Terminal app preferences'
-  copy:
-    src: "{{ macos_terminal_colorscheme }}/com.apple.Terminal.plist"
-    dest: ~/Library/Preferences/
-    owner: "{{ ansible_user_id }}"
-    group: staff
-    mode: 0600
-  tags: macos_terminal
-
-#  - defaults write com.apple.Terminal 'Default Window Settings' -string 'Solarized_Dark_custom'
-- name: '[main] Ensure {{ macos_terminal_colorscheme }} profile is set as default'
-  osx_defaults:
-    domain: com.apple.Terminal
-    state: present
-    key: "{{ item }}"
-    type: string
-    value: "{{ macos_terminal_colorscheme }}"
-  with_items:
-  - 'Default Window Settings'
-  - 'Startup Window Settings'
-  tags: macos_terminal
-
-- meta: flush_handlers
-  tags: macos_terminal
-...
+- name: '[main] Include Fingerprint sensor tasks'
+  include_tasks: fingerprint_sensor.yml
+  when: macos_terminal_fingerprint_sensor
+  tags:
+  - macos_terminal
+  - macos_terminal_fingerprint

@@ -1,0 +1,19 @@
+# This file is Ansible managed
+
+# Check current directory for ansible-created backup of this file.
+
+# If there are any typos happen and you need to fix it do the following:
+# 1. Enable root user with Directory Utility > Edit (top panel) > Enable root
+# 2. Use `su` in shell to login as root and `chmod +w /etc/pam.d/sudo`
+# 3. Finally fix the typo and do `chmod -w /etc/pam.d/sudo`
+# Alternatively, single-user mode can be used.
+
+# sudo: auth account password session
+#auth       optional       {{ homebrew_prefix }}/lib/pam/pam_reattach.so
+auth       optional       {{ macsetup_brew_prefix.stdout }}/lib/pam/pam_reattach.so
+auth       sufficient     pam_tid.so
+auth       sufficient     pam_smartcard.so
+auth       required       pam_opendirectory.so
+account    required       pam_permit.so
+password   required       pam_deny.so
+session    required       pam_permit.so

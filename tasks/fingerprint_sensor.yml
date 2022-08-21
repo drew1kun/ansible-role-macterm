@@ -1,0 +1,34 @@
+---
+# tasks file for fingerprint_sensor.yml
+
+- name: '[fingerprint] Ensure custom pam-reattach module is installed (works with iTerm2 & Tmux)'
+  community.general.homebrew:
+    name: pam-reattach
+    state: present
+  register: macos_terminal_pam_install_result
+  until: macos_terminal_pam_install_result is succeeded
+  tags:
+  - macos_terminal_fingerprint
+  - macos_terminal
+
+- name: '[fingerprint] Check if pam-reattach was correctly installed'
+  stat:
+    path: "{{ macos_terminal_brew_prefix.stdout }}/lib/pam/pam_reattach.so"
+  register: macos_terminal_pam_reattach_so
+  tags:
+  - macos_terminal_fingerprint
+  - macos_terminal
+
+- name: '[fingerprint] Modify PAM config for sudo to make Fingerprint work with iTerm & Tmux'
+  template:
+    src: etc.pam.d.sudo.j2
+    dest: /etc/pam.d/sudo
+    backup: yes
+    owner: root
+    group: wheel
+    mode: 0444
+  become: yes
+  when: macos_terminal_pam_reattach_so.stat.exists
+  tags:
+  - macos_terminal_fingerprint
+  - macos_terminal

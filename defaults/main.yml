@@ -7,4 +7,7 @@ macos_terminal_iterm2: yes
 
 # Solarized_Dark_Custom | Nord_Custom | Cipherpunk
 macos_terminal_colorscheme: Solarized_Dark_Custom
+
+# Setup sudo to use fingerprint sensor, if there is one.
+macos_terminal_fingerprint_sensor: no
 ...
