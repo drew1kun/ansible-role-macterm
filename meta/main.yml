@@ -22,4 +22,3 @@ galaxy_info:
 dependencies:
 #  - { role: drew1kun.terminus_powerline, when: macterm_iterm2 }
 #  - drew1kun.nerdfonts
-...

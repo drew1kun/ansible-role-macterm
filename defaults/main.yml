@@ -10,4 +10,3 @@ macterm_colorscheme: Solarized_Dark_Custom
 
 # Setup sudo to use fingerprint sensor, if there is one.
 macterm_fingerprint_sensor: no
-...
