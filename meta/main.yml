@@ -1,5 +1,5 @@
 galaxy_info:
-  role_name: macos_terminal
+  role_name: macterm
   author: Andrew Shagayev
   description: Configure the terminal to use Solarized Colorscheme, Nerdfonts and Terminus powerline fonts
 
@@ -20,6 +20,6 @@ galaxy_info:
   - iterm2
 
 dependencies:
-#  - { role: drew-kun.terminus_powerline, when: macos_terminal_iterm2 }
-#  - drew-kun.nerdfonts
+#  - { role: drew1kun.terminus_powerline, when: macterm_iterm2 }
+#  - drew1kun.nerdfonts
 ...

@@ -3,11 +3,11 @@
 
 # If set to 'yes' homebrew and terminus_powerline roles are required.
 # If set to 'no' then neither dependency roles nor iterm2  will be set up
-macos_terminal_iterm2: yes
+macterm_iterm2: yes
 
 # Solarized_Dark_Custom | Nord_Custom | Cipherpunk
-macos_terminal_colorscheme: Solarized_Dark_Custom
+macterm_colorscheme: Solarized_Dark_Custom
 
 # Setup sudo to use fingerprint sensor, if there is one.
-macos_terminal_fingerprint_sensor: no
+macterm_fingerprint_sensor: no
 ...

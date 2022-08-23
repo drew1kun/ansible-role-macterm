@@ -5,19 +5,19 @@
   community.general.homebrew:
     name: pam-reattach
     state: present
-  register: macos_terminal_pam_install_result
-  until: macos_terminal_pam_install_result is succeeded
+  register: macterm_pam_install_result
+  until: macterm_pam_install_result is succeeded
   tags:
-  - macos_terminal_fingerprint
-  - macos_terminal
+  - macterm_fingerprint
+  - macterm
 
 - name: '[fingerprint] Check if pam-reattach was correctly installed'
   stat:
-    path: "{{ macos_terminal_brew_prefix.stdout }}/lib/pam/pam_reattach.so"
-  register: macos_terminal_pam_reattach_so
+    path: "{{ macterm_brew_prefix.stdout }}/lib/pam/pam_reattach.so"
+  register: macterm_pam_reattach_so
   tags:
-  - macos_terminal_fingerprint
-  - macos_terminal
+  - macterm_fingerprint
+  - macterm
 
 - name: '[fingerprint] Modify PAM config for sudo to make Fingerprint work with iTerm & Tmux'
   template:
@@ -28,7 +28,7 @@
     group: wheel
     mode: 0444
   become: yes
-  when: macos_terminal_pam_reattach_so.stat.exists
+  when: macterm_pam_reattach_so.stat.exists
   tags:
-  - macos_terminal_fingerprint
-  - macos_terminal
+  - macterm_fingerprint
+  - macterm

@@ -1,5 +1,5 @@
 ---
-# handlers file for macos_terminal
+# handlers file for macterm
 
 # at least on jan6 2019, the osx_defaults module does not allow to READ values (shame).
 # alternatively run 'killall cfprefsd' command
