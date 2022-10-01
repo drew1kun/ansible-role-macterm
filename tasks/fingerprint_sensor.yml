@@ -23,11 +23,11 @@
   template:
     src: etc.pam.d.sudo.j2
     dest: /etc/pam.d/sudo
-    backup: yes
+    backup: true
     owner: root
     group: wheel
     mode: 0444
-  become: yes
+  become: true
   when: macterm_pam_reattach_so.stat.exists
   tags:
   - macterm_fingerprint

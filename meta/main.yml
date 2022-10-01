@@ -16,9 +16,11 @@ galaxy_info:
 
   galaxy_tags:
   - macos
+  - osx
   - terminal
   - iterm2
+  - workstation
 
 dependencies:
-#  - { role: drew1kun.terminus_powerline, when: macterm_iterm2 }
-#  - drew1kun.nerdfonts
+  - { role: drew1kun.fancyfonts.terminus_powerline, when: macterm_iterm2 }
+  - drew1kun.fancyfonts.nerdfonts
