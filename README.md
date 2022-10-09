@@ -18,10 +18,10 @@ This role does the following:
 In combination with [ansible-ohmyzsh role](https://github.com/drew1kun/ansible-ohmyzsh) getting the following results:
 
 iTerm2:
-![alt text](https://github.com/drew1kun/ansible-macterm/blob/master/imgs/iterm2_ohmzsh.png "iTerm2")
+![](imgs/iterm2_ohmzsh.jpg)
 
 MacOS Terminal app:
-![alt text](https://github.com/drew1kun/ansible-macterm/blob/master/imgs/terminal.png "MacOS Terminal app")
+![](imgs/terminal.jpg)
 
 
 Requirements
