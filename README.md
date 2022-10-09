@@ -3,6 +3,15 @@
 [![MIT licensed][mit-badge]][mit-link]
 [![Galaxy Role][role-badge]][galaxy-link]
 
+DEPRECATION NOTICE
+----
+This role is being deprecated in favor of [ansible-collection-mac][mac-github-link].
+
+Collection on Galaxy: [drew1kun.mac][mac-galaxy-link]
+
+Description
+----
+
 Ansible role for terminal configuration on MacOS (Linux coming soon)
 
 This role does the following:
@@ -95,3 +104,6 @@ Andrew Shagayev | [e-mail](mailto:drewshg@gmail.com)
 [nerdfonts]: https://nerdfonts.com/
 [terminus-git]: https://github.com/drew1kun/terminus_powerline_font_osx
 [solarized-link]: http://ethanschoonover.com/solarized
+
+[mac-github-link]: https://github.com/drew1kun/ansible-collection-mac
+[mac-galaxy-link]: https://galaxy.ansible.com/drew1kun/mac
